@@ -638,6 +638,7 @@ video {
 
 .text-clip {
   text-overflow: clip;
+  white-space: nowrap;
 }
 
 .rounded-md {

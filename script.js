@@ -3,7 +3,9 @@ const charCountSpan = document.getElementById("char-count");
 
 textInput.addEventListener("keydown", function(e) {
   if (e.key === "Tab") {
-    this.value += "\t";
+    const start = this.selectionStart;
+    const end = this.selectionEnd;
+    this.value = this.value.substring(0, start) + "\t" + this.value.substring(end);
     e.preventDefault();
   }
 });
@@ -22,6 +24,16 @@ generateButton.addEventListener("click", function() {
     return;
   }
 
-  const compressed = LZString.compressToBase64(text);
-  output.innerText = window.location.href + "/" + compressed;
+  let compressed = LZString.compressToBase64(text);
+  compressed = encodeURIComponent(compressed);
+  output.innerText = `${window.location.origin}${window.location.pathname}?c=${compressed}`;
 });
+
+const urlParams = new URLSearchParams(window.location.search);
+let compressed = urlParams.get("c");
+if (compressed) {
+  compressed = decodeURIComponent(compressed);
+  const text = LZString.decompressFromBase64(compressed);
+  textInput.value = text;
+  charCountSpan.innerText = text.length;
+}

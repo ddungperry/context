@@ -16,19 +16,19 @@
       id="text-input"
       class="h-full w-full resize-none bg-background p-2 pb-4 text-xl outline-none placeholder:italic"
       placeholder="Type here"
-      maxlength=4000
+      maxlength="10000"
     ></textarea>
 
     <div class="absolute right-8 bottom-14 text-background bg-text/50 hover:bg-text px-2 py-1 rounded-md duration-500">
       <p>
-        <span id="char-count"></span> / 4000
+        <span id="char-count"></span> / 10000
       </p>
     </div>
 
     <footer class="flex w-full items-center justify-between gap-2 bg-secondary/50 text-xl">
       <p class="w-5/6 select-all p-2 text-clip overflow-hidden" id="generated-link"></p>
 
-      <div class="w-fit1/6 flex items-center justify-end gap-2">
+      <div class="w-1/6 flex items-center justify-end gap-2">
         <button class="p-2 hover:bg-secondary" id="generate-button"> Generate </button>
         <a
           href="https://github.com/ana117/context"
