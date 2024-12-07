@@ -26,7 +26,9 @@ generateButton.addEventListener("click", function() {
 
   let compressed = LZString.compressToBase64(text);
   compressed = encodeURIComponent(compressed);
-  output.innerText = `${window.location.origin}${window.location.pathname}?c=${compressed}`;
+  const url = `${window.location.origin}${window.location.pathname}?c=${compressed}`;
+  output.innerText = url;
+  window.history.pushState({}, "", url);
 });
 
 const urlParams = new URLSearchParams(window.location.search);
